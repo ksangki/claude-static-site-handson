@@ -7,6 +7,7 @@
 ## 읽기
 
 - **웹 버전**: [GitHub Pages에서 읽기](https://ksangki.github.io/claude-static-site-handson/)
+- **발표 자료**: [1시간 발표용 슬라이드 43장](https://ksangki.github.io/claude-static-site-handson/presentation/) · 원천은 [`deck/slides.py`](deck/slides.py)
 - **오프닝 영상**: [60초 모션그래픽](https://ksangki.github.io/claude-static-site-handson/media/opening.mp4) · 웹 버전 첫 화면에도 실려 있다
 - **EPUB**: [`따라-하면-완성되는-내-첫-웹사이트-v1.0.1.epub`](따라-하면-완성되는-내-첫-웹사이트-v1.0.1.epub) 다운로드
 
