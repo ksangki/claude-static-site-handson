@@ -8,7 +8,7 @@
 
 - **웹 버전**: [GitHub Pages에서 읽기](https://ksangki.github.io/claude-static-site-handson/)
 - **오프닝 영상**: [60초 모션그래픽](https://ksangki.github.io/claude-static-site-handson/media/opening.mp4) · 웹 버전 첫 화면에도 실려 있다
-- **EPUB**: [`따라-하면-완성되는-내-첫-웹사이트-v1.0.0.epub`](따라-하면-완성되는-내-첫-웹사이트-v1.0.0.epub) 다운로드
+- **EPUB**: [`따라-하면-완성되는-내-첫-웹사이트-v1.0.1.epub`](따라-하면-완성되는-내-첫-웹사이트-v1.0.1.epub) 다운로드
 
 ## 관통 프로젝트
 
@@ -36,6 +36,11 @@
 
 - [ksangki.github.io](https://ksangki.github.io/) — 포트폴리오 예시
 - [hr-exchange-2026.vercel.app](https://hr-exchange-2026.vercel.app/) — 이벤트 사이트 예시
+
+## 판 이력
+
+- **v1.0.1(2026-11-01):** 문체 점검 — AI 문체 패턴 51곳 정리, 내용·수치 변경 없음.
+- **v1.0.0(2026-05-04):** 초판.
 
 ## 저자
 

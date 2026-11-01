@@ -1,8 +1,8 @@
-# Build Log — 따라 하면 완성되는 내 첫 웹사이트 v1.0.0
+# Build Log — 따라 하면 완성되는 내 첫 웹사이트 v1.0.1
 
-- **Date:** 2026-08-29T06:21:00Z
-- **Output:** `따라-하면-완성되는-내-첫-웹사이트-v1.0.0.epub`
-- **Size:** 82417 bytes
+- **Date:** 2026-11-01T00:04:29Z
+- **Output:** `따라-하면-완성되는-내-첫-웹사이트-v1.0.1.epub`
+- **Size:** 82293 bytes
 - **Pandoc exit:** 0
 - **epubcheck:** passed
 - **epubcheck strict:** 1
@@ -14,8 +14,8 @@
 - title: 따라 하면 완성되는 내 첫 웹사이트
 - author: 김상기
 - language: ko
-- version: 1.0.0
-- pub_date: 2026-05-04
+- version: 1.0.1
+- pub_date: 2026-11-01
 - identifier: urn:uuid:3a274a0d-8356-4a03-921b-f8c30ea35ed5
 - license: CC BY-NC-SA 4.0
 - genre: tech-book
