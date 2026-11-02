@@ -57,3 +57,46 @@
 
 - EPUB: 하네스 `build_epub.sh`(book-writer의 `.claude/skills/epub-build/scripts/`)를 v1.0.0과 같은 방식으로 실행(harness_version 1.11.0). `따라-하면-완성되는-내-첫-웹사이트-v1.0.1.epub` 82,293 bytes, epubcheck 오류 0·경고 0. 저장소 루트와 `docs/epub/`에 두었고 v1.0.0 파일은 기존 링크 때문에 남겼다.
 - 웹: `docs/index.html`의 목차(`nav#TOC`)와 `<main>` 본문을 pandoc 3.9(`--toc --toc-depth=2`, html5)으로 새 원고에서 다시 만들어 끼웠다. 이 방식이 v1.0.0 페이지를 그대로 재현함을 먼저 확인했다(목차 바이트 동일, 본문은 첫 h1 줄바꿈 1곳만 달라 그 줄은 원래 모양으로 유지). 머리 영역(hero), 오프닝 영상 블록(`media/opening.mp4`), 스타일·스크립트는 바이트 단위로 그대로다. 목차에 "판권" 항목 하나가 늘었다.
+
+## v1.0.2 패치 (2026-11-02)
+
+본문(장 파일) 변경 없음. 바꾼 것은 표지·웹 레이아웃·README 차례·판본 표기다.
+
+### 1. 표지
+
+- 전: `cover.png`는 남색 바탕에 하늘색 가로선 두 줄뿐, 글자 없음(1600×2560).
+- 후: 같은 그림 위 두 선 사이 띠에 제목 "따라 하면 완성되는"(흰색) / "내 첫 웹사이트"(하늘색 #64c8ff), 그 아래 부제 "비개발자를 위한 Claude AI 실습 가이드", 아래 여백에 저자 "김상기". Pretendard Bold/Regular, Pillow 합성, 1600×2560, 70KB. 원본 그림은 `cover_art.png`로 보존.
+- 근거: 제목·부제·저자는 `book_manifest.json`과 `front_matter.md` 표제지 문자열 그대로(글자 단위 대조 완료). 400px 썸네일에서 제목이 읽히는지 직접 확인.
+- 반영처: EPUB 표지, 웹 첫 화면(hero에 표지 그림 추가, `docs/cover.png`), og:image(`https://ksangki.github.io/claude-static-site-handson/cover.png`), README 상단 이미지, 발표 자료 첫 장(`deck/slides.py`의 `art=False` → `art=True`, 엔진이 `../cover.png` 참조).
+
+### 2. 웹 390px 가로 넘침
+
+- 전: 390px에서 scrollWidth 442(약 52px 넘침). 원인은 8장 "GitHub Pages vs Vercel" 비교 표(감싸개 없이 본문보다 넓음). 표를 고치고 나니 5장 인라인 코드 `github.com/username/username.github.io…`가 16px 넘쳤다.
+- 후: pandoc 출력의 `<table>` 7개를 `<div class="table-wrap">`(overflow-x:auto)로 감쌈. `th,td`에 `overflow-wrap:break-word; min-width:6.5em`. 인라인 코드(`:not(pre)>code`)에 `overflow-wrap:break-word`. 코드 블록 `pre`는 원래 overflow-x:auto.
+- 결과(Playwright): 390·768·1440 모두 scrollWidth = 화면 폭, 넘침 요소 0, 이미지 전부 로드. 표 칸 최소 폭 105px(390)·134px(1440) — 한 글자씩 쪼개지지 않음(1440 표 캡처 확인).
+
+### 3. README 차례 장 제목
+
+원고 `04_manuscript.md`의 `# N장.` 제목에 맞춤. 원고의 ` --- `는 EPUB·웹에서 `—`로 찍히므로 README에도 `—`로 적었다. PART 묶음 열은 02_plan.md의 PART 구분이라 그대로 두었다.
+
+| 장 | 전 | 후 |
+|---|---|---|
+| 1 | 코딩 몰라도 웹사이트를 만들 수 있다고? | AI가 코딩하는 시대, 당신도 웹사이트를 만들 수 있어요 |
+| 2 | 도구 준비: Claude, GitHub, Vercel | 도구 준비 — 계정 만들고 시작 준비하기 |
+| 3 | Claude와 대화로 포트폴리오 디자인하기 | Claude와 첫 대화 — "내 소개 페이지 만들어 줘" |
+| 4 | 내 이력서를 웹사이트로 | 포트폴리오 완성하기 — 내 이야기를 채워 넣기 |
+| 5 | GitHub Pages로 세상에 공개하기 | 세상에 공개하기 — GitHub Pages로 배포 |
+| 6 | 포트폴리오 업그레이드 | 더 멋지게 — 포트폴리오 업그레이드 |
+| 7 | Claude Code로 컨퍼런스 사이트 만들기 | 여러 페이지 사이트 만들기 — Claude Code 첫 만남 |
+| 8 | Vercel로 자동 배포하기 | Vercel로 자동 배포 — 고치면 바로 반영되는 사이트 |
+| 9 | 막힐 때 찾는 트러블슈팅 가이드 | 막혔을 때 — 트러블슈팅 종합 가이드 |
+| 10 | 다음 단계로 | 이 다음은요? — 당신의 다음 사이트를 위한 안내 |
+
+### 판본·빌드
+
+- `book_manifest.json` 1.0.1 → 1.0.2, pub_date 2026-11-02(identifier 유지). 판권 판본·발행일 갱신, 판 이력 "v1.0.2(2026-11-02): 글자 있는 표지로 교체, 웹 버전 좁은 화면 가로 넘침 보정, README 차례 장 제목을 원고와 맞춤 — 본문 변경 없음." README에 같은 줄과 EPUB 링크 v1.0.2. 이 저장소에는 별도 책 소개 md가 없어 README만 고쳤다.
+- `04_manuscript.md`: v1.0.1 원고에 판권 3줄만 바꿔 만듦(diff 3+/2-).
+- EPUB: book-writer `build_epub.sh .` — `따라-하면-완성되는-내-첫-웹사이트-v1.0.2.epub` 136,553 bytes, epubcheck 오류 0·경고 0. 루트와 `docs/epub/`에 둠(이전 판 유지).
+- 웹: v1.0.1과 같은 방식(pandoc 3.9 `--toc --toc-depth=2` → `nav#TOC`·`<main>` 교체, 첫 h1 줄바꿈 원래 모양 유지). 재현 확인: v1.0.1 원고로 돌린 출력이 기존 페이지와 목차 바이트 동일, 본문은 첫 h1 줄바꿈만 다름. 오프닝 영상 블록·"발표 자료" 링크 유지.
+- 덱: `python3 deck/slides.py <book-writer-harness site-build/scripts> docs/presentation/index.html` — 43장, 바뀐 곳은 첫 장 표지 그림과 끝 장 판본 표기 2줄. 390·1440 넘침 0, 표지 로드 확인.
+- 백업: `_v1.0.1/`(chapters, front_matter.md, 04_manuscript.md, book_manifest.json, cover.png, README.md, index.html, slides.py). 저장소에 올리지 않음.

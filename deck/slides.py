@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""「따라 하면 완성되는 내 첫 웹사이트」 발표자료 내용 (v1.0.1) — 엔진은 하네스 site-build/scripts/deck.py.
+"""「따라 하면 완성되는 내 첫 웹사이트」 발표자료 내용 (v1.0.2) — 엔진은 하네스 site-build/scripts/deck.py.
 사용법: python3 deck/slides.py <엔진 폴더> docs/presentation/index.html
-내용의 출처는 04_manuscript.md(v1.0.1)뿐이다. 명령어·파일 이름·UI 라벨·프롬프트는 원고 그대로 옮긴다.
-원고에 본문 그림(SVG)이 없어 그림 슬라이드는 없다. 표지 PNG에는 제목 글자가 없어 표지는 글자 표지(art=False)로 둔다.
+내용의 출처는 04_manuscript.md(v1.0.2)뿐이다. 명령어·파일 이름·UI 라벨·프롬프트는 원고 그대로 옮긴다.
+원고에 본문 그림(SVG)이 없어 그림 슬라이드는 없다. 표지 그림은 v1.0.2에서 제목·부제·저자를 넣은 cover.png(docs/cover.png로 복사)를 쓴다.
 색은 매니페스트에 theme이 없어 표지(cover.png)의 바탕 남색·강조 하늘색에서 골라 이 파일 안에 둔다."""
 import sys, pathlib, html
 sys.path.insert(0, sys.argv[1])
@@ -30,7 +30,7 @@ def c(s):
 D.cover(eyebrow='HANDS-ON · 비개발자를 위한 실습 가이드', title_html='따라 하면 완성되는<br><span class="coral-t">내 첫 웹사이트</span>',
         subtitle='비개발자를 위한 Claude AI 실습 가이드',
         quote='"읽으면서 따라 하는 책이에요. 한 챕터를 읽고 나면 눈에 보이는 결과물이 하나씩 생겨요."',
-        quote_by='— 머리말', meta='김상기 · 1시간 발표', art=False)
+        quote_by='— 머리말', meta='김상기 · 1시간 발표', art=True)
 
 D.quote("OPENING", "먼저 질문 하나", "\"저도 웹사이트를 만들 수 있을까요?\"",
         "\"네, 지금 바로요.\"",
@@ -357,6 +357,6 @@ D.ez("운동은 <b>운동화를 신고 현관문을 나서는 순간</b> 절반�
 
 D.end_cover(title_html='Claude를 열고,<br>말을 걸고,<br><span class="coral-t">만들어보세요.</span>',
             subtitle='따라 하면 완성되는 내 첫 웹사이트 — 비개발자를 위한 Claude AI 실습 가이드',
-            note='여러분의 다음 사이트를 응원할게요.<br>v1.0.1(2026-11-01) · CC&nbsp;BY-NC-SA&nbsp;4.0 · ksangki.github.io/claude-static-site-handson')
+            note='여러분의 다음 사이트를 응원할게요.<br>v1.0.2(2026-11-02) · CC&nbsp;BY-NC-SA&nbsp;4.0 · ksangki.github.io/claude-static-site-handson')
 
 D.render(sys.argv[2])
