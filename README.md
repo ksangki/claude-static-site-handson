@@ -11,7 +11,7 @@
 - **웹 버전**: [GitHub Pages에서 읽기](https://ksangki.github.io/claude-static-site-handson/)
 - **발표 자료**: [1시간 발표용 슬라이드 43장](https://ksangki.github.io/claude-static-site-handson/presentation/) · 원천은 [`deck/slides.py`](deck/slides.py)
 - **오프닝 영상**: [60초 모션그래픽](https://ksangki.github.io/claude-static-site-handson/media/opening.mp4) · 웹 버전 첫 화면에도 실려 있다
-- **EPUB**: [`따라-하면-완성되는-내-첫-웹사이트-v1.0.4.epub`](따라-하면-완성되는-내-첫-웹사이트-v1.0.4.epub) 다운로드
+- **EPUB**: [`따라-하면-완성되는-내-첫-웹사이트-v1.0.5.epub`](따라-하면-완성되는-내-첫-웹사이트-v1.0.5.epub) 다운로드
 
 ## 관통 프로젝트
 
@@ -42,6 +42,7 @@
 
 ## 판 이력
 
+- **v1.0.5(2026-11-07):** 3장 예고와 4장 첫머리의 섹션 목록을 4장 본문(히어로, About Me, Skills, Projects, Contact)과 같게 맞춤.
 - **v1.0.4(2026-11-07):** 3장 예고의 섹션 목록에 Skills를 넣어 다섯 개로 맞춤.
 - **v1.0.3(2026-11-07):** 문체 2차 점검(한국어 표현 지침), 106곳 정리, 내용·수치 변경 없음.
 - **v1.0.2(2026-11-02):** 글자 있는 표지로 교체, 웹 버전 좁은 화면 가로 넘침 보정, README 차례 장 제목을 원고와 맞춤, 본문 변경 없음.

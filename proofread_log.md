@@ -172,3 +172,12 @@
 - **백업:** `_v1.0.3/`(chapters, front_matter.md, 04_manuscript.md, book_manifest.json, README.md, index.html, presentation_index.html, slides.py, proofread_log.md, build_log.md). 저장소에는 올리지 않았다.
 - **빌드:** EPUB은 book-writer `build_epub.sh .`(v1.0.3과 같은 방식, JAVA_HOME=/opt/homebrew/opt/openjdk@17), 136,510 bytes, epubcheck 오류 0·경고 0. 루트와 `docs/epub/`에 둠(이전 판 유지). 웹은 v1.0.3과 같은 방식(pandoc 3.13 `--toc --toc-depth=2` → `nav#TOC`·`<main>` 교체, 표 `table-wrap`, 첫 h1 줄바꿈 원래 모양), 먼저 v1.0.3 원고로 재현을 확인했다(첫 h1 줄바꿈만 다름). 바뀐 곳은 판권 2곳과 3장 문장 1곳, 목차·머리 영역·오프닝 영상 블록·발표 자료 링크는 바이트 동일. 덱은 `python3 deck/slides.py <book-writer-harness site-build/scripts> docs/presentation/index.html`, 43장, 판본 표기 3곳과 `<title>` 구분자(하네스 엔진이 「 — 」 대신 「 | 」를 붙이게 바뀜)만 달라졌다.
 - **Playwright(Chrome):** 웹·덱 모두 390·1440에서 scrollWidth = 화면 폭, 넘침 요소 0.
+
+## 정오 패치: v1.0.5 (2026-11-07)
+
+- **문제:** 3장 끝 예고와 4장 첫머리는 섹션을 「About Me, Skills, 경력, 프로젝트, 연락처」로 꼽았지만, 4장 본문(섹션 표, 1~4단계, 전체 코드 요청 프롬프트, 결과물 표, 마무리)과 발표 자료는 「히어로, About Me, Skills, Projects, Contact」이다. 본문에는 경력 섹션·단계가 없다.
+- **고친 곳(저자 결정: 산문 두 문장을 본문에 맞춤):** `chapters/04_final.md`·`04_manuscript.md` 4장 첫머리 → 「히어로, About Me, Skills, Projects, Contact, 이렇게 다섯 개 섹션을」, `chapters/03_final.md`·`04_manuscript.md` 3장 예고 → 「히어로, About Me, Skills, Projects, Contact까지 다섯 개 섹션이」. 10장 예시·표·프롬프트·덱 내용은 그대로.
+- **판권:** 판본 v1.0.5, 판 이력 「v1.0.5(2026-11-07): 3장 예고와 4장 첫머리의 섹션 목록을 4장 본문(히어로, About Me, Skills, Projects, Contact)과 같게 맞춤.」 README 같은 줄과 EPUB 링크 v1.0.5, 매니페스트 version 1.0.5.
+- **백업:** `_v1.0.4/`(v1.0.3과 같은 구성). 저장소에는 올리지 않았다.
+- **빌드:** EPUB `build_epub.sh .`, 136,580 bytes, epubcheck 오류 0·경고 0, 루트와 `docs/epub/`. 웹은 바뀐 4곳(판본, 판 이력, 3장·4장 문장)만 고쳤고 목차·머리 영역·오프닝 영상·발표 자료 링크는 그대로. 덱은 판본 표기 3곳만 바뀜(43장).
+- **Playwright(Chrome):** 웹·덱 모두 390·1440에서 scrollWidth = 화면 폭, 넘침 요소 0.
