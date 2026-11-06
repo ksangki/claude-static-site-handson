@@ -163,3 +163,12 @@
 - 덱: `python3 deck/slides.py <book-writer-harness site-build/scripts> docs/presentation/index.html`, 43장.
 - Playwright(Chrome): 웹·덱 모두 390·1440에서 scrollWidth = 화면 폭, 넘침 요소 0.
 - 남은 것: 덱 `<title>` 끝의 " — 1시간 발표 자료"는 하네스 엔진(`deck.py`)이 붙이는 고정 문구라 이 책 쪽에서 바꾸지 않았다.
+
+## 정오 패치: v1.0.4 (2026-11-07)
+
+- **문제:** 3장 끝 예고 문장이 「About Me, 경력, 프로젝트, 연락처까지, 다섯 개 섹션이…」로 Skills가 빠져 넷만 나열했다. 4장 첫머리는 「About Me, Skills, 경력, 프로젝트, 연락처」 다섯이다.
+- **고친 곳:** `chapters/03_final.md`·`04_manuscript.md` 같은 문장 1곳 → 「About Me, Skills, 경력, 프로젝트, 연락처까지 다섯 개 섹션이…」(4장 순서). 다른 문장은 건드리지 않았다. 발표 자료·README에는 같은 예고가 없어 판본 표기만 바꿨다.
+- **판권:** 판본 v1.0.4, 판 이력 「v1.0.4(2026-11-07): 3장 예고의 섹션 목록에 Skills를 넣어 다섯 개로 맞춤.」 README에 같은 줄과 EPUB 링크 v1.0.4. 이 저장소에는 별도 책 소개 md가 없다. 매니페스트 version 1.0.4(pub_date·identifier 유지).
+- **백업:** `_v1.0.3/`(chapters, front_matter.md, 04_manuscript.md, book_manifest.json, README.md, index.html, presentation_index.html, slides.py, proofread_log.md, build_log.md). 저장소에는 올리지 않았다.
+- **빌드:** EPUB은 book-writer `build_epub.sh .`(v1.0.3과 같은 방식, JAVA_HOME=/opt/homebrew/opt/openjdk@17), 136,510 bytes, epubcheck 오류 0·경고 0. 루트와 `docs/epub/`에 둠(이전 판 유지). 웹은 v1.0.3과 같은 방식(pandoc 3.13 `--toc --toc-depth=2` → `nav#TOC`·`<main>` 교체, 표 `table-wrap`, 첫 h1 줄바꿈 원래 모양), 먼저 v1.0.3 원고로 재현을 확인했다(첫 h1 줄바꿈만 다름). 바뀐 곳은 판권 2곳과 3장 문장 1곳, 목차·머리 영역·오프닝 영상 블록·발표 자료 링크는 바이트 동일. 덱은 `python3 deck/slides.py <book-writer-harness site-build/scripts> docs/presentation/index.html`, 43장, 판본 표기 3곳과 `<title>` 구분자(하네스 엔진이 「 — 」 대신 「 | 」를 붙이게 바뀜)만 달라졌다.
+- **Playwright(Chrome):** 웹·덱 모두 390·1440에서 scrollWidth = 화면 폭, 넘침 요소 0.
